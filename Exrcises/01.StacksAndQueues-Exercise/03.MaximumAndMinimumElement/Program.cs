@@ -22,27 +22,18 @@ namespace _03.MaximumAndMinimumElement
             "{n}, {n1}, {n2} …, {nn}"
 
 
-        Input Output
-
-9
-
-1 97
-
-2
-
-1 20
-
-2
-
-1 26
-
-1 20
-
-3
-
-1 91
-
-4
+        Input                Output
+            
+            9                   20          
+            1 97                26
+            2                   91, 20, 26
+            1 20
+            2
+            1 26
+            1 20
+            3
+            1 91
+            4
          
          */
         static void Main(string[] args)
@@ -53,6 +44,13 @@ namespace _03.MaximumAndMinimumElement
             Stack<int> maxStack = new Stack<int>();
             Stack<int> minStack = new Stack<int>();
 
+            /*
+                1 x – Push the element x into the stack.
+                2 – Delete the element present at the top of the stack.
+                3 – Print the maximum element in the stack.
+                4 – Print the minimum element in the stack
+
+             */
             for (int i = 0; i < N; i++)
             {
                 int[] query = Console.ReadLine().Split().Select(int.Parse).ToArray();
@@ -92,6 +90,7 @@ namespace _03.MaximumAndMinimumElement
                         break;
 
                     case 3:
+
                         if (maxStack.Count > 0)
                         {
                             Console.WriteLine(maxStack.Peek());
@@ -107,8 +106,10 @@ namespace _03.MaximumAndMinimumElement
                 }
             }
 
-            // Print the stack in the required format
-            Console.WriteLine(string.Join(", ", stack.Reverse()));
+            Console.WriteLine(string.Join(", ", stack.ToArray()));
+
+
+
         }
     }
 }

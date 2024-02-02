@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Linq;
 
-namespace _01.SumMatrixElements
+namespace _02.SumMatrixColumns
 {
-    /*
-     Input                    Output
-    3, 6                        3
-    7, 1, 3, 3, 2, 1            6
-    1, 3, 9, 8, 5, 6            76
-    4, 6, 7, 9, 1, 0
-
-     */
     internal class Program
     {
+        /*
+         Input         Output
+        3, 6            12
+        7 1 3 3 2 1     10
+        1 3 9 8 5 6     19
+        4 6 7 9 1 0     20
+                        8
+                        7
+
+         
+         */
         static void Main(string[] args)
         {
             string[] sizes = Console.ReadLine().Split(", ");
@@ -22,33 +25,28 @@ namespace _01.SumMatrixElements
             int[,] matrix = new int[rows, cols];
 
 
-            // 1 2 3
-            // 2 3 4
-            // 4 5 6
             for (int row = 0; row < rows; row++)
             {
-                int[] data = Console.ReadLine().Split(", ").Select(int.Parse).ToArray();
+                int[] data = Console.ReadLine().Split(" ").Select(int.Parse).ToArray();
                 for (int col = 0; col < cols; col++)
                 {
                     matrix[row, col] = data[col];
                 }
             }
 
-            int sum = 0;
-
-            for (int row = 0; row < rows; row++)
+            //Sum by cols
+            for (int col = 0; col < cols; col++)
             {
-                for (int col = 0; col < cols; col++)
+                int sum = 0;
+                for (int row = 0; row < rows; row++)
                 {
                     sum += matrix[row, col];
                 }
+
+                Console.WriteLine(sum);
             }
 
-            Console.WriteLine(rows);
-            Console.WriteLine(cols);
-            Console.WriteLine(sum);
-
-           // PrintMatrix(matrix);
+            //PrintMatrix(matrix);
         }
 
 
